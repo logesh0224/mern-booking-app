@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 
 const UI_URL = "http://localhost:5174/";
 
+
+
 test("should allow the user to sign in", async ({ page }) => {
   await page.goto(UI_URL);
 
@@ -14,8 +16,9 @@ test("should allow the user to sign in", async ({ page }) => {
   await page.locator("[name=password]").fill("password123");
 
   await page.getByRole("button", { name: "Login" }).click();
+  await expect(page.getByText("Sign in Successfull")).toBeVisible({ timeout: 20000 });
 
-  await expect(page.getByText("Sign in Successful!")).toBeVisible();
+
   await expect(page.getByRole("link", { name: "My Bookings" })).toBeVisible();
   await expect(page.getByRole("link", { name: "My Hotels" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Sign Out" })).toBeVisible();

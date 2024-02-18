@@ -4,7 +4,7 @@ import cloudinary from 'cloudinary'
 import Hotel from "../models/hotel";
 import verifyToken from "./middleware/auth";
 import { body } from "express-validator";
-import { HotelType } from "../models/hotel";
+import { HotelType } from "../shared/types";
 const router =express.Router();
 
 
@@ -60,5 +60,15 @@ console.log("Error creating hotel: ",e);
 res.status(500).json({message:"Something Went Wrong"});
 }
 })
+router.get("/", verifyToken, async (req: Request, res: Response) => {
+    try {
+      const hotels = await Hotel.find({ userId: req.userId });
+      res.json(hotels);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching hotels" });
+    }
+  });
+
+
 
  export default router;

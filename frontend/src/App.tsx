@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
 import AddHotel from "./pages/AddHotel";
 import { useAppContext } from "./contexts/AppContext";
+import MyHotels from "./pages/MyHotels";
 
 //import { useAppContext } from "./contexts/AppContext";
 
@@ -24,15 +25,25 @@ const App = ()=>{
         <Route path="/sign-in" element={<Layout><SignIn/>
         </Layout>}
         />
-      { isLoggedIn && <>
+      { isLoggedIn &&( <>
         <Route path="/add-hotel"
         element={
           <Layout>
             <AddHotel/>
           </Layout>
-        }>
-          </Route>
-          </>}
+        }/>
+        <Route path="/my-hotels"
+        element={
+          <Layout>
+            <MyHotels/>
+          </Layout>
+        }
+        />
+        </>
+      )}
+
+      
+          
         
         </Routes>
     </Router>

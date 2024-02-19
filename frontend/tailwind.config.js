@@ -4,7 +4,9 @@
 export default{
 
     content: ["./index.html","./src/*/**{js,ts,jsx,tsx}"],
-  
+    optimization: {
+      // Disable tree shaking for CSS files
+      usedExports: true},
   theme: {
     extend: {},
     container: {

@@ -24,7 +24,9 @@ await queryClient.invalidateQueries("validateToken")
 navigate(location.state?.from?.pathname || "/");
   },onError:(error:Error)=>{
 
-showToast({message:error.message,type:"ERROR"})
+showToast({
+  message: error.message,type:"ERROR"
+})
   }
 })
 const onSubmit= handleSubmit((data)=>{

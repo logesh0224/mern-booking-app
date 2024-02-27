@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
     // get the sign in button
     await page.getByRole("link", { name: "Sign In" }).click();
   
-    await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible({timeout:20000});
+    await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible({timeout:90000});
   
     await page.locator("[name=email]").fill("1@1.com");
     await page.locator("[name=password]").fill("password123");

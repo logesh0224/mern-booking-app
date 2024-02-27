@@ -3,10 +3,8 @@
 
 export default{
 
-    content: ["./index.html","./src/*/**{js,ts,jsx,tsx}"],
-    optimization: {
-      // Disable tree shaking for CSS files
-      usedExports: true},
+    content: ["./index.html","./src/**/*.{js,ts,jsx,tsx}"],
+  
   theme: {
     extend: {},
     container: {

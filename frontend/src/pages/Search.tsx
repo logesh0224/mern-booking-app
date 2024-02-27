@@ -85,7 +85,7 @@ return(
   
   <div className="flex justify-between items-center">
     <span className="text-xl font-bold">
-      {hotelData?.pagination.total} Hotels found
+      
       {search.destination ? ` in ${search.destination}` : ""}
     </span>
 

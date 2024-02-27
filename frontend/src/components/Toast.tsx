@@ -21,11 +21,11 @@ const Toast = ({ message, type, onClose }: ToastProps) => {
     type === "SUCCESS"
       ? "fixed top-4 right-4 z-50 p-4 rounded-md bg-green-600 text-white max-w-md"
       : "fixed top-4 right-4 z-50 p-4 rounded-md bg-red-600 text-white max-w-md";
-
+      const messageString = typeof message === "object" ? JSON.stringify(message) : message;
   return (
     <div className={styles}>
       <div className="flex justify-center items-center">
-        <span className="text-lg font-semibold">{message}</span>
+        <span className="text-lg font-semibold">{messageString}</span>
       </div>
     </div>
   );

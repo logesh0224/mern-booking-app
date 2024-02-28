@@ -4,24 +4,21 @@ import path from "path";
 const UI_URL = "http://localhost:5174/";
 
 test.beforeEach(async ({ page }) => {
-    await page.goto(UI_URL);
-  
-    // get the sign in button
-    await page.getByRole("link", { name: "Sign In" }).click();
-  
-    await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible({timeout:90000});
-  
-    await page.locator("[name=email]").fill("1@1.com");
-    await page.locator("[name=password]").fill("password123");
-  
-    await page.getByRole("button", { name: "Login" }).click();
-  
-    await expect(page.getByText("Sign in Successfull")).toBeVisible();
-      
-    })
-  
+  await page.goto(UI_URL);
+
   // get the sign in button
- 
+  await page.getByRole("link", { name: "Sign In" }).click();
+
+  await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible();
+
+  await page.locator("[name=email]").fill("1@1.com");
+  await page.locator("[name=password]").fill("password123");
+
+  await page.getByRole("button", { name: "Login" }).click();
+
+  await expect(page.getByText("Sign in Successfull")).toBeVisible();
+});
+
 test("should allow user to add a hotel", async ({ page }) => {
   await page.goto(`${UI_URL}add-hotel`);
 
@@ -45,14 +42,12 @@ test("should allow user to add a hotel", async ({ page }) => {
   await page.setInputFiles('[name="imageFiles"]', [
     path.join(__dirname, "files", "h1.jpg"),
     path.join(__dirname, "files", "h2.jpg"),
-    path.join(__dirname, "files", "h3.jpg")
+    path.join(__dirname),"files","h3.jpg"
   ]);
 
   await page.getByRole("button", { name: "Save" }).click();
-  await expect(page.getByText("Hotel Saved!")).toBeVisible({ timeout: 20000 });
-
+  await expect(page.getByText("Hotel Saved!")).toBeVisible();
 });
-
 
 test("should display hotels", async ({ page }) => {
   await page.goto(`${UI_URL}my-hotels`);
@@ -71,20 +66,18 @@ test("should display hotels", async ({ page }) => {
   await expect(page.getByRole("link", { name: "Add Hotel" })).toBeVisible();
 });
 
-
 test("should edit hotel", async ({ page }) => {
   await page.goto(`${UI_URL}my-hotels`);
 
   await page.getByRole("link", { name: "View Details" }).first().click();
 
-  await page.waitForSelector('[name="name"]', { state: "attached" ,timeout:20000});
+  await page.waitForSelector('[name="name"]', { state: "attached" });
   await expect(page.locator('[name="name"]')).toHaveValue("Dublin Getaways");
   await page.locator('[name="name"]').fill("Dublin Getaways UPDATED");
   await page.getByRole("button", { name: "Save" }).click();
   await expect(page.getByText("Hotel Saved!")).toBeVisible();
 
-  await page.reload({ timeout: 20000 });
-
+  await page.reload();
 
   await expect(page.locator('[name="name"]')).toHaveValue(
     "Dublin Getaways UPDATED"

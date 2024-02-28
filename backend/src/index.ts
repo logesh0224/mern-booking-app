@@ -37,7 +37,7 @@ app.use(cors({
 }));
 app.use(express.static(path.join(__dirname,"../../frontend/dist")))
 
-const PORT=10000;
+const PORT=8111;
 app.use("/api/auth",authRoutes)
 app.use("/api/users" ,userRoutes);
 app.use("/api/my-hotels",myHotelRoutes);

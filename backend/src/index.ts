@@ -52,8 +52,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.get("*", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
   });
+  const HOST = process.env.HOST || '0.0.0.0';
   
-app.listen(PORT,'0.0.0.0',() =>{
+app.listen(PORT,HOST,() =>{
     console.log(`Connected to Port ${PORT}`)
 
 })

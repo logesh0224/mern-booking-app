@@ -53,7 +53,7 @@ app.get("*", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
   });
   
-app.listen(PORT,() =>{
+app.listen(PORT,'0.0.0.0',() =>{
     console.log(`Connected to Port ${PORT}`)
 
 })

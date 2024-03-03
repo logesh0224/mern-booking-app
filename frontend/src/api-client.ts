@@ -220,7 +220,8 @@ export const createRoomBooking = async (formData: BookingFormData) => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
+      credentials: "include"
+      ,
       body: JSON.stringify(formData),
     }
   );

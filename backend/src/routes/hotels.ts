@@ -79,6 +79,7 @@ res.json(response);
 
 });
 
+
 router.post("/:hotelId/bookings/payment-intent",verifyToken,async(req:Request,res:Response)=>{
    //1 //totalcost
     //2hotelid/
@@ -94,7 +95,7 @@ router.post("/:hotelId/bookings/payment-intent",verifyToken,async(req:Request,re
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: totalcost * 100,
-      currency: "gbp",
+      currency: "inr",
       metadata: {
         hotelId,
         userId: req.userId,
@@ -116,9 +117,7 @@ router.post("/:hotelId/bookings/payment-intent",verifyToken,async(req:Request,re
   );
 
 
-  
-  router.post(
-    "/:hotelId/bookings",
+    router.post("/:hotelId/bookings",
     verifyToken,
     async (req: Request, res: Response) => {
       try {
@@ -229,6 +228,9 @@ router.post("/:hotelId/bookings/payment-intent",verifyToken,async(req:Request,re
         $lte: parseInt(queryParams.maxPrice).toString(),
       };
     }
+  
+    // Add the new hotel object with an empty bookings array
+    constructedQuery.bookings = { $exists: true, $eq: [] };
   
     return constructedQuery;
   };

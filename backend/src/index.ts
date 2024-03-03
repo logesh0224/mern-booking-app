@@ -1,5 +1,5 @@
 //import { responsiveFontSizes } from '@mui/material';
-import express,{ Request,Response} from 'express';
+import express,{ NextFunction, Request,Response} from 'express';
 import cors from "cors";
 import "dotenv/config";
 import mongoose from 'mongoose';
@@ -42,6 +42,12 @@ app.use("/api/auth",authRoutes)
 app.use("/api/users" ,userRoutes);
 app.use("/api/my-hotels",myHotelRoutes);
 app.use("/api/hotels",hotelRoutes);
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.setHeader('Referrer-Policy', 'no-referrer');
+    next();
+  });
+  
 
 app.get("*", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));

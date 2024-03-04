@@ -43,10 +43,7 @@ app.use("/api/users" ,userRoutes);
 app.use("/api/my-hotels",myHotelRoutes);
 app.use("/api/hotels",hotelRoutes);
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-    res.setHeader('Referrer-Policy', 'no-referrer');
-    next();
-  });
+
   
 
 app.get("*", (req: Request, res: Response) => {

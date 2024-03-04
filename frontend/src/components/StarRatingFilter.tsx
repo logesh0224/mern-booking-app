@@ -7,20 +7,18 @@ const StarRatingFilter = ({ selectedStars, onChange }: Props) => {
   return (
     <div className="border-b border-slate-300 pb-5">
       <h4 className="text-md font-semibold mb-2">Property Rating</h4>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-        {["5", "4", "3", "2", "1"].map((star, index) => (
-          <label key={index} className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              className="rounded"
-              value={star}
-              checked={selectedStars.includes(star)}
-              onChange={onChange}
-            />
-            <span>{star} Stars</span>
-          </label>
-        ))}
-      </div>
+      {["5", "4", "3", "2", "1"].map((star) => (
+        <label className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            className="rounded"
+            value={star}
+            checked={selectedStars.includes(star)}
+            onChange={onChange}
+          />
+          <span>{star} Stars</span>
+        </label>
+      ))}
     </div>
   );
 };

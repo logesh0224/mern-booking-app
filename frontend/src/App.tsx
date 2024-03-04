@@ -17,6 +17,7 @@ import Detail from "./pages/Detail";
 import Booking from "./pages/Booking";
 //import hotelBgImage from "./hotel_bg.jpg";
 import MyBookings from "./pages/MyBookings";
+import Home from "./pages/Home";
 
 
 
@@ -28,7 +29,7 @@ const App = ()=>{
   return(
     <Router>
       <Routes>
-        
+        <Route path="/" element={<Layout> <Home/></Layout>} />
         <Route path="/search" element={<Layout><Search/></Layout>}/>
         <Route path="/detail/:hotelId" element={<Layout><Detail /></Layout>}/>
         <Route path="/register" element={<Layout><Register/></Layout>}/>

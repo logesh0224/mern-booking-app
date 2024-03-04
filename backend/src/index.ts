@@ -45,10 +45,7 @@ app.use("/api/my-hotels",myHotelRoutes);
 app.use("/api/hotels",hotelRoutes);
 app.use("/api/my-bookings",bookingRoutes);
 
-app.use((req, res, next) => {
-    res.setHeader('Content-Security-Policy', "script-src 'self' https://www.lokimerndeveloper.me https://res.cloudinary.com");
 
-  });
   
   
 

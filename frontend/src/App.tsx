@@ -15,7 +15,7 @@ import EditHotel from "./pages/EditHotel";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
 import Booking from "./pages/Booking";
-import hotelBgImage from "./hotel_bg.jpg";
+//import hotelBgImage from "./hotel_bg.jpg";
 import MyBookings from "./pages/MyBookings";
 
 
@@ -28,8 +28,7 @@ const App = ()=>{
   return(
     <Router>
       <Routes>
-        <Route path="/" element={<Layout><p><img className="flex flex-0 py-10 w-full "src={hotelBgImage}>
-          </img></p></Layout>}/>
+        
         <Route path="/search" element={<Layout><Search/></Layout>}/>
         <Route path="/detail/:hotelId" element={<Layout><Detail /></Layout>}/>
         <Route path="/register" element={<Layout><Register/></Layout>}/>

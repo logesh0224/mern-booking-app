@@ -1,6 +1,7 @@
 import {BrowserRouter as Router,
   Route,
   Routes,
+  Navigate,
   
   
 } from "react-router-dom";
@@ -15,6 +16,7 @@ import Search from "./pages/Search";
 import Detail from "./pages/Detail";
 import Booking from "./pages/Booking";
 import hotelBgImage from "./hotel_bg.jpg";
+import MyBookings from "./pages/MyBookings";
 
 
 
@@ -63,12 +65,19 @@ const App = ()=>{
           </Layout>
         }
         />
+        <Route path="/my-bookings"
+        element={
+          <Layout>
+            <MyBookings/>
+          </Layout>
+        }
+        />
         </>
       )}
 
       
           
-        
+        <Route path="*" element={<Navigate to="/" />}/>
         </Routes>
     </Router>
   );

@@ -80,7 +80,7 @@ export const signOut = async () => {
 export const addMyHotel = async (hotelFormData: FormData) => {
     const response = await fetch(`${API_BASE_URL}/api/my-hotels`, {
       method: "POST",
-      credentials: "include",
+      
       body: hotelFormData,
     });
   

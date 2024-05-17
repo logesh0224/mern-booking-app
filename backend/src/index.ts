@@ -38,7 +38,7 @@ app.use(cors({
 }));
 app.use(express.static(path.join(__dirname,"../../frontend/dist")))
 
-const PORT=8111;
+const PORT=10000;
 app.use("/api/auth",authRoutes)
 app.use("/api/users" ,userRoutes);
 app.use("/api/my-hotels",myHotelRoutes);
@@ -52,9 +52,9 @@ app.use("/api/my-bookings",bookingRoutes);
 app.get("*", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
   });
-  const HOST = process.env.HOST || '0.0.0.0';
+  const HOST = process.env.HOST || 10000;
   
-app.listen(PORT,HOST,() =>{
+app.listen(PORT,'0.0.0.0',() =>{
     console.log(`Connected to Port ${PORT}`)
 
 })
